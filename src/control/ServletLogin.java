@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,7 @@ public class ServletLogin extends HttpServlet {
 		String senhaCliente = request.getParameter("senhacliente");
 		
 		
-		PrintWriter out=  response.getWriter();
+	
 		
 		//obter uma conexao com o BD
 		Connection conexao = Conexao.getConexao();
@@ -49,9 +50,21 @@ public class ServletLogin extends HttpServlet {
 		if(cd.isCliente(cpfCliente, senhaCliente)) {
 			// obter cliente 
 			Cliente c = cd.getCliente(cpfCliente, senhaCliente);
-			out.println("Oi " + c.getNomeCliente());
+			
+			// criar um atributo novo
+			request.setAttribute("cliente", c);
+			
+			// Repassar o resquest/ response para p JSP
+			RequestDispatcher rd = request.getRequestDispatcher("loginSucesso.jsp");
+			
+			rd.forward(request, response);
+			
 		}else {
-			out.println("Cliente inválido");
+			
+			// Repassar o resquest/ response para p JSP
+						RequestDispatcher rd = request.getRequestDispatcher("loginErro.jsp");
+						
+						rd.forward(request, response);
 		}
 		
 		
