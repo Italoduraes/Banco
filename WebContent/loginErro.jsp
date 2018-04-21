@@ -12,10 +12,10 @@
 <h1> quem es tu seu otario!</h1> </div>
  
  <h3>Favor login novamente</h3>
-<form action="login">
+<form action="ServletLogin">
 CPF: <input type="text" name= "cpfcliente"><br>
-senha: <input type="password"  name="senhacliente"><br>
-<input type="submit" value="Acessar">
+senha: <input type="password"  name="senhacliente"><br><br>
+<input class="btn btn-primary" type="submit" value="Acessar">
 </form>
  
  

@@ -1,7 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +17,7 @@ import model.Cliente;
 /**
  * Servlet implementation class ServletLogin
  */
-@WebServlet("/login")
+@WebServlet("/ServletLogin")
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -55,7 +54,7 @@ public class ServletLogin extends HttpServlet {
 			request.setAttribute("cliente", c);
 			
 			// Repassar o resquest/ response para p JSP
-			RequestDispatcher rd = request.getRequestDispatcher("loginSucesso.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("detalheC");
 			
 			rd.forward(request, response);
 			
